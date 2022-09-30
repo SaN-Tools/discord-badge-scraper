@@ -1,5 +1,6 @@
 from disgay.scraper import scrape
 from colorama import Fore
+import json
 
 x = [
     "f",
@@ -11,6 +12,12 @@ x = [
 def main():
 
     token = input("Enter your token (skip to choose from config): ")
+
+    if len(token) < 10:
+        with open("config.json", "r", encoding="utf-8") as ff:
+            config = json.load(ff)
+            token = config["token"]
+
     guild_id = input("Enter guild id: ")
     channel_id = input("Enter channel id: ")
 
